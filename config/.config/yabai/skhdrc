@@ -1,0 +1,116 @@
+# terminal
+cmd - return : open-app iterm2
+ctrl - return : tmx new
+ctrl - o : tmx attach
+
+# finder
+cmd - o : open-app finder
+
+#tmux won't map C-Tab or C-`
+ctrl - tab [
+	"iTerm2"       : skhd -k "ctrl - l"
+	*              ~
+]
+ctrl - 0x32 [
+	"iTerm2"       : skhd -k "ctrl - k"
+	*              ~
+]
+
+# safari
+#cmd - f [
+	#"Safari"       ~
+	#*              : open-app finder
+#]
+cmd - t [
+	"Safari"       ~
+	*              : open -a Safari
+]
+
+# wallpaper
+fast : wallpaper -o ~/pictures/wallpapers
+cmd + shift - 0 : wallpaper ~/pictures/wallpapers
+lcmd - 0 : wallpaper -o ~/pictures/wallpapers
+cmd + shift - d : new-roses -ns ~/pictures/wallpapers
+# colors
+rcmd - 0 : wallpaper -o 0
+rcmd - 1 : wallpaper -o 1
+rcmd - 2 : wallpaper -o 2
+rcmd - 3 : wallpaper -o 3
+rcmd - 4 : wallpaper -o 4
+rcmd - 5 : wallpaper -o 5
+rcmd - 6 : wallpaper -o 6
+rcmd - 7 : wallpaper -o 7
+rcmd - 8 : wallpaper -o 8
+
+# palette
+play : colorlovers -nqr
+cmd + shift - r : colorlovers -nqr
+lcmd + shift - e : colorlovers -nq -b 202020
+lcmd + shift - w : colorlovers -nq -b fefefe
+rcmd + shift - e : wal -i ~/pictures/wallpapers -q -o wal-set
+rcmd + shift - w : wal -i ~/pictures/wallpapers -l -q -o wal-set
+cmd + shift - s : colorlovers -nqs
+
+# nightmode
+cmd + shift - n : night
+
+# bar
+# cmd - h : toggleshadow
+cmd - h : togglebar
+
+# screenshot
+cmd + shift - p : scr -n
+cmd - p : scr -nu
+
+# thps
+rcmd + shift - t : bash ~/scripts/bin/thugpro
+
+# fullscreen
+# cmd + shift - f : chunkc tiling::window --toggle native-fullscreen
+
+############################
+# yabai                    #
+############################
+
+# create & destroy
+#shift + ctrl - return : yabai -m space --create && landscape
+#create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
+shift + ctrl - return : yabai -m space --create && \
+									index="$(yabai -m query --spaces --display | jq 'map(select(."native-fullscreen" == 0))[-1].index')" && \
+									yabai -m window --space "${index}" && \
+									yabai -m space --focus "${index}" && \
+									landscape
+shift + ctrl - backspace : yabai -m space --destroy && landscape
+
+# toggle
+ctrl - space : yabai -m space --layout bsp
+shift + ctrl - space : yabai -m space --layout float
+ctrl - f : yabai -m window --toggle native-fullscreen
+
+# move
+ctrl - left : yabai -m space --focus prev && landscape
+ctrl - right : yabai -m space --focus next && landscape
+alt - left : yabai -m window --focus prev
+alt - right : yabai -m window --focus next
+ctrl - 1 : landscape -p; yabai -m space --focus 1; landscape
+ctrl - 2 : landscape -p; yabai -m space --focus 2; landscape
+ctrl - 3 : landscape -p; yabai -m space --focus 3; landscape
+ctrl - 4 : landscape -p; yabai -m space --focus 4; landscape
+ctrl - 5 : landscape -p; yabai -m space --focus 5; landscape
+ctrl - 6 : landscape -p; yabai -m space --focus 6; landscape
+ctrl - 7 : landscape -p; yabai -m space --focus 7; landscape
+ctrl - 8 : landscape -p; yabai -m space --focus 8; landscape
+ctrl - 9 : landscape -p; yabai -m space --focus 9; landscape
+ctrl - 0 : landscape -p; yabai -m space --focus 10; landscape
+shift + ctrl - left : yabai -m window --space prev; landscape -p; yabai -m space --focus prev; landscape
+shift + ctrl - right : yabai -m window --space next; landscape -p; yabai -m space --focus next; landscape
+shift + ctrl - 1 : yabai -m window --space 1; landscape -p; yabai -m space --focus 1; landscape
+shift + ctrl - 2 : yabai -m window --space 2; landscape -p; yabai -m space --focus 2; landscape
+shift + ctrl - 3 : yabai -m window --space 3; landscape -p; yabai -m space --focus 3; landscape
+shift + ctrl - 4 : yabai -m window --space 4; landscape -p; yabai -m space --focus 4; landscape
+shift + ctrl - 5 : yabai -m window --space 5; landscape -p; yabai -m space --focus 5; landscape
+shift + ctrl - 6 : yabai -m window --space 6; landscape -p; yabai -m space --focus 6; landscape
+shift + ctrl - 7 : yabai -m window --space 7; landscape -p; yabai -m space --focus 7; landscape
+shift + ctrl - 8 : yabai -m window --space 8; landscape -p; yabai -m space --focus 8; landscape
+shift + ctrl - 9 : yabai -m window --space 9; landscape -p; yabai -m space --focus 9; landscape
+shift + ctrl - 0 : yabai -m window --space 10; landscape -p; yabai -m space --focus 10; landscape
