@@ -82,3 +82,12 @@ set -gx PATH "$PNPM_HOME" $PATH
 # pnpm end
 set -q GHCUP_INSTALL_BASE_PREFIX[1]; or set GHCUP_INSTALL_BASE_PREFIX $HOME ; set -gx PATH $HOME/.cabal/bin $PATH /Users/blaine/.ghcup/bin # ghcup-env
 
+
+fish_add_path /Users/blaine/.spicetify
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/blaine/Downloads/google-cloud-sdk/path.fish.inc' ]; . '/Users/blaine/Downloads/google-cloud-sdk/path.fish.inc'; end
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH

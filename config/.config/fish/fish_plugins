@@ -6,3 +6,4 @@ oh-my-fish/plugin-bang-bang
 oh-my-fish/plugin-pyenv
 daltonsena/fish-poetry
 patrickf1/fzf.fish
+jorgebucaran/nvm.fish
