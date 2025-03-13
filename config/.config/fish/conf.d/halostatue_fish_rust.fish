@@ -1,19 +1,15 @@
-set -l rustup_path $HOME/.cargo/bin
+# @halostatue/fish-rust/conf.d/halostatue_fish_rust.fish:v2.0.2
 
-set -q CARGO_HOME
-and set -l rustup_path $CARGO_HOME/bin
+set --local cargo_bin $HOME/.cargo/bin
 
-test -d $rustup_path
-and contains -- $rustup_path $fish_user_paths
-or set fish_user_paths $fish_user_paths $rustup_path
+if set --query CARGO_HOME
+    set cargo_bin $CARGO_HOME/bin
+end
+
+if test -d $cargo_bin
+    contains -- $cargo_bin $fish_user_paths
+    or fish_add_path --prepend --path $cargo_bin
+end
 
 function _halostatue_fish_rust_uninstall -e halostatue_fish_rust_uninstall
-    set -l rustup_path $HOME/.cargo/bin
-    set -q CARGO_HOME
-    and set -l rustup_path $CARGO_HOME/bin
-
-    set -l i (contains -i -- $rustup_path $fish_user_paths)
-    and set -e fish_user_paths[$i]
-
-    functions -e (status function)
 end
